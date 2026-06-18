@@ -53,4 +53,13 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
+  document.querySelectorAll(".hero__rates-track").forEach((track) => {
+    if (track.dataset.tickerReady) return;
+    Array.from(track.children).forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      track.appendChild(clone);
+    });
+    track.dataset.tickerReady = "true";
+  });
 });
